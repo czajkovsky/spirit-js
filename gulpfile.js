@@ -6,6 +6,12 @@ var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
+gulp.task('sass', function () {
+  gulp.src('app/styles/**/*.scss')
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe(gulp.dest('.tmp/styles'));
+});
+
 gulp.task('styles', function () {
   return gulp.src('app/styles/main.css')
     .pipe($.sourcemaps.init())
@@ -93,9 +99,11 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], function () {
     'app/scripts/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*',
-    '.tmp/scripts/**/*.js'
+    '.tmp/scripts/**/*.js',
+    '.tmp/styles/**/*.css'
   ]).on('change', reload);
 
+  gulp.watch('app/styles/**/*.scss', ['sass']);
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('app/scripts/**/*.coffee', ['scripts']);
