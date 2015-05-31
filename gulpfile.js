@@ -5,6 +5,11 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+gulp.task('bower-files', function() {
+    return gulp.src(require('main-bower-files')(), { base: 'bower_components' })
+    .pipe(gulp.dest("./.tmp/vendor"))
+    .pipe(gulp.dest("./dist/vendor"))
+});
 
 gulp.task('sass', function () {
   gulp.src('app/styles/**/*.scss')
@@ -81,7 +86,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'fonts'], function () {
+gulp.task('serve', ['bower-files', 'sass', 'styles', 'scripts', 'fonts'], function () {
   browserSync({
     notify: false,
     port: 9000,
@@ -121,7 +126,7 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', ['bower-files', 'jshint', 'html', 'images', 'fonts', 'extras'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

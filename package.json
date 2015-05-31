@@ -13,6 +13,7 @@
     "gulp-csso": "^0.2.6",
     "gulp-if": "^1.2.1",
     "gulp-imagemin": "^2.0.0",
+    "gulp-inject": "^1.2.0",
     "gulp-jshint": "^1.5.3",
     "gulp-load-plugins": "^0.8.0",
     "gulp-minify-html": "^0.1.6",
@@ -23,7 +24,7 @@
     "gulp-uglify": "^1.0.1",
     "gulp-useref": "^1.0.2",
     "jshint-stylish": "^1.0.0",
-    "main-bower-files": "^2.5.0",
+    "main-bower-files": "^2.8.0",
     "opn": "^1.0.0",
     "wiredep": "^2.0.0"
   }
