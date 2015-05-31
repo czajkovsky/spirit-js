@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "modernizr": "~2.8.1",
-    "normalize.css": "~3.0.3"
+    "normalize.css": "~3.0.3",
+    "phaser": "~2.3.0"
   }
 }
