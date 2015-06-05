@@ -6,6 +6,7 @@ class Spirit.Player
   initPhysics: ->
     @sprite.anchor.setTo(0.5, 0.5)
     @sprite.body.allowRotation = false
+    @sprite.body.collideWorldBounds = true
 
   updateRotation: ->
     @sprite.rotation = @game.physics.arcade.moveToPointer(@sprite, 80, @game.input.activePointer, 500)

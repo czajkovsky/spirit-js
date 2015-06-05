@@ -7,6 +7,7 @@ Spirit.gameStates =
     Spirit.player = new Spirit.Player(Spirit.game)
     Spirit.game.stage.backgroundColor = '#2c3646'
     Spirit.game.physics.enable(Spirit.player.sprite, Phaser.Physics.ARCADE)
+    Spirit.player.initPhysics()
 
   update: ->
     Spirit.player.updateRotation()
