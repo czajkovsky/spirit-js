@@ -1,2 +1,7 @@
-windowSize = Spirit.UI.windowSize()
-Spirit.game = new Phaser.Game(windowSize.width, windowSize.height, Phaser.AUTO, '', Spirit.gameStates);
+Spirit.game = new Phaser.Game(
+  Spirit.UI.windowSize().width,
+  Spirit.UI.windowSize().height,
+  Phaser.AUTO,
+  '',
+  Spirit.gameStates
+);
