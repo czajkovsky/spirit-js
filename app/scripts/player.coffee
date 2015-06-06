@@ -9,6 +9,6 @@ class Spirit.Player
     @sprite.body.collideWorldBounds = true
 
   updateRotation: ->
-    @sprite.rotation = @game.physics.arcade.moveToPointer(@sprite, 80, @game.input.activePointer, 500)
+    @sprite.rotation = @game.physics.arcade.moveToPointer(@sprite, 10, @game.input.activePointer, 350)
 
 
