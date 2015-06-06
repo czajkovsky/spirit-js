@@ -14,7 +14,7 @@ class Spirit.Engine
 
   create: ->
     @player = new Spirit.Player(@game)
-    @game.stage.backgroundColor = '#2c3646'
+    @game.stage.backgroundColor = '#172234'
 
     @game.physics.startSystem(Phaser.Physics.BOX2D);
     @game.physics.box2d.friction = 0;
@@ -28,9 +28,11 @@ class Spirit.Engine
     @player.initCollisions()
 
     new Spirit.Colony(@game, @progressManager)
-    @colonyCretorIntervalId = setInterval((=> new Spirit.Colony(@game, @progressManager) ), 10000)
+    @colonyCretorIntervalId = setInterval((=> new Spirit.Colony(@game, @progressManager)), 10000)
 
     @ui.setScale()
+
+    @game.physics.box2d.setBoundsToWorld()
 
   update: ->
     @player.updateRotation()
