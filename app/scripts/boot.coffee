@@ -1,1 +1,2 @@
-window.Spirit = {}
+window.Spirit =
+  Enemies: {}

@@ -4,7 +4,7 @@ class Spirit.UI
     @game = game
 
   pixelRatio: ->
-    @game.device.pixelRatio
+    window.devicePixelRatio
 
   setScale: ->
     @game.scale.maxWidth = Math.round(@game.canvas.width / @pixelRatio());
