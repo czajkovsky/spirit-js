@@ -10,6 +10,7 @@ class Spirit.Engine
     @ui = new Spirit.UI(@game)
     @game.load.image('rocket', 'images/rocket.png')
     @game.load.image('random-enemy', 'images/random-enemy.png')
+    @game.load.image('cloud-inactive', 'images/cloud-inactive.png')
     @progressManager = new Spirit.ProgressManager()
 
   create: ->
@@ -28,7 +29,9 @@ class Spirit.Engine
     @player.initCollisions()
 
     new Spirit.Colony(@game, @progressManager)
+    new Spirit.Cloud(@game)
     @colonyCretorIntervalId = setInterval((=> new Spirit.Colony(@game, @progressManager)), 10000)
+    @colonyCretorIntervalId = setInterval((=> new Spirit.Cloud(@game)), 10000)
 
     @ui.setScale()
 
