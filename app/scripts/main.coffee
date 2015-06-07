@@ -1,0 +1,1 @@
+spirit = new Spirit.Game()

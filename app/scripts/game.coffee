@@ -1,1 +1,44 @@
-spirit = new Spirit.Engine()
+class Spirit.Game
+
+  constructor: ->
+    @game = new Phaser.Game(Spirit.Helpers.size().width, Spirit.Helpers.size().height, Phaser.AUTO, '', @states())
+
+  states: ->
+   { preload: @preload, create: @create, update: @update }
+
+  preload: ->
+    @ui = new Spirit.UI(@game)
+    @engine = new Spirit.Engine(@game)
+
+    @progressManager = new Spirit.ProgressManager()
+
+    @engine.loadAssets()
+    @engine.initPhysics()
+
+  create: ->
+    @engine.coins = new Spirit.Groups.Coins(@game)
+    # @engine.coins.create(500, 90)
+
+    @player = new Spirit.Player(@game)
+    @game.stage.backgroundColor = '#172234'
+
+    @game.physics.box2d.enable(@player.sprite, false)
+
+    @player.initPhysics()
+    @player.initCollisions()
+
+    @ui.setScale()
+
+    @game.physics.box2d.setBoundsToWorld()
+
+  update: ->
+    @player.updateRotation()
+
+    if (@createNewEnemy)
+      _sprite = @game._engine.coins.create(@game.world.randomX, @game.world.randomY, 'cloud-inactive')
+      @createNewEnemy = false
+
+    # if (@game.time.now > @fireTime)
+    #   _sprite = @game._engine.coins.create(@game.world.randomX, @game.world.randomY, 'cloud-inactive')
+    #   # _sprite.events.onDestroy.add((-> @game._engine.coins.create(0, 0, 'coin')), @)
+    #   @fireTime = @game.time.now + 500

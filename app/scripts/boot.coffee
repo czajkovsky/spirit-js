@@ -1,5 +1,6 @@
 window.Spirit =
   Enemies: {}
+  Groups: {}
   COLLISIONS_MASKS:
     enemy: 25
     coin: 17
