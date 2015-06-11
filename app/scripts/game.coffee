@@ -17,7 +17,7 @@ class Spirit.Game
     @engine.groupsManager.add('coin', Spirit.Behaviours.Coin)
     @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive)
     @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive)
-    # @engine.groupsManager.add('random_enemy', false)
+    @engine.groupsManager.add('enemy_random', Spirit.Behaviours.EnemyRandom)
 
     @player = new Spirit.Player(@engine, @game)
     @game.stage.backgroundColor = '#172234'
@@ -35,5 +35,6 @@ class Spirit.Game
     @player.updateRotation()
     @engine.groupsManager.periodicGenerate('coin', @game.world.randomX, @game.world.randomY)
     @engine.groupsManager.periodicGenerate('cloud_inactive', @game.world.randomX, @game.world.randomY)
+    @engine.groupsManager.periodicGenerate('enemy_random', @game.world.randomX, @game.world.randomY)
 
     @engine.groupsManager.checkPending('cloud_active')
