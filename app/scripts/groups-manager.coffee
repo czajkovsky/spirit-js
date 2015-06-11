@@ -19,4 +19,4 @@ class Spirit.GroupsManager
   periodicGenerate: (key, x, y) ->
     if @game.time.now > @groups[key].lastGenerationTime + Spirit.GROUP_INTERVALS[key]
       @groups[key].data.create(x, y)
-      @groups[key].lastGenerationTime = @game.time.now
+      @groups[key].lastGenerationTime = @game.time.now + parseInt(Math.random() * Spirit.GROUP_INTERVALS[key], 10)
