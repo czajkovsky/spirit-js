@@ -16,3 +16,7 @@ window.Spirit =
     cloud_inactive: 4
     player: 16
     wall: 1
+
+  GROUP_INTERVALS:
+    coin: 500
+    cloud_inactive: 10000

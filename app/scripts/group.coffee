@@ -1,6 +1,5 @@
 class Spirit.Group
   constructor: (@game, @key) ->
-    console.log 'asfas'
     @container = @game.add.group()
     @container.enableBody = true
     @container.physicsBodyType = Phaser.Physics.BOX2D

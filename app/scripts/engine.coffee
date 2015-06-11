@@ -1,8 +1,6 @@
 class Spirit.Engine
   constructor: (@game) ->
-    @firetime =
-      enemy: 100
-      cloud: 500
+    @groupsManager = new Spirit.GroupsManager(@game)
 
   loadAssets: ->
     @game.load.image('rocket', 'images/rocket.png')
