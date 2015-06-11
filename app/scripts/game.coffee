@@ -33,9 +33,11 @@ class Spirit.Game
 
   update: ->
     @player.updateRotation()
-    # @engine.groupsManager.periodicGenerate('coin', @game.world.randomX, @game.world.randomY)
+
     @engine.groupsManager.periodicGenerate('cloud_inactive', @game.world.randomX, @game.world.randomY)
     @engine.groupsManager.periodicGenerate('enemy_random', @game.world.randomX, @game.world.randomY)
 
     @engine.groupsManager.checkPending('cloud_active')
     @engine.groupsManager.checkPending('coin')
+
+    @engine.groupsManager.checkOutdated('cloud_active')

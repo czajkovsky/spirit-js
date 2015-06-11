@@ -22,3 +22,6 @@ window.Spirit =
     coin: 500
     enemy_random: 2000
     cloud_inactive: 10000
+
+  GROUP_PERIODS:
+    cloud_active: 7000

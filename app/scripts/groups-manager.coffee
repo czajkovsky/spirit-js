@@ -16,6 +16,9 @@ class Spirit.GroupsManager
       @groups[key].data.create(@queue[key].x, @queue[key].y)
       delete @queue[key]
 
+  checkOutdated: (key) ->
+    @groups[key].data.checkOutdated(Spirit.GROUP_PERIODS[key])
+
   periodicGenerate: (key, x, y) ->
     if @game.time.now > @groups[key].lastGenerationTime + Spirit.GROUP_INTERVALS[key]
       @groups[key].data.create(x, y)
