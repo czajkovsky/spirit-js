@@ -1,6 +1,7 @@
 class Spirit.ProgressManager
 
   constructor: ->
+    @lives = 3
     @coinsCollected = 0
     @score = 0
     @colonyAmount = 3

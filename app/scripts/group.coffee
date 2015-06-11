@@ -1,5 +1,6 @@
 class Spirit.Group
-  constructor: (@game, @key, @isMoving) ->
+  constructor: (@game, @key, @behaviour) ->
+    console.log @behaviour
     @container = @game.add.group()
     @container.enableBody = true
     @container.physicsBodyType = Phaser.Physics.BOX2D
@@ -10,13 +11,4 @@ class Spirit.Group
     _sprite = @container.create(x, y, @key)
     _sprite.body.setCollisionMask(@mask)
     _sprite.body.setCollisionCategory(@category)
-    if @isMoving
-      _sprite.body.velocity.x = @_randomVelocity()
-      _sprite.body.velocity.y = @_randomVelocity()
-
-  _randomVelocity: ->
-    sign = (if Math.random() > 0.5 then -1 else 1)
-    base = parseInt(Math.random() * 100, 10)
-    sign * base
-
-
+    new @behaviour(_sprite)

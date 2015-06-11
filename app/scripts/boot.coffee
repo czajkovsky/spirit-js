@@ -1,5 +1,6 @@
 window.Spirit =
   Enemies: {}
+  Behaviours: {}
 
   COLLISIONS_MASKS:
     enemy: 25

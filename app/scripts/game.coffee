@@ -14,9 +14,10 @@ class Spirit.Game
     @engine.initPhysics()
 
   create: ->
-    @engine.groupsManager.add('coin', false)
-    @engine.groupsManager.add('cloud_inactive', true)
-    @engine.groupsManager.add('cloud_active', false)
+    @engine.groupsManager.add('coin', Spirit.Behaviours.Coin)
+    @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive)
+    @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive)
+    # @engine.groupsManager.add('random_enemy', false)
 
     @player = new Spirit.Player(@engine, @game)
     @game.stage.backgroundColor = '#172234'
@@ -36,12 +37,3 @@ class Spirit.Game
     @engine.groupsManager.periodicGenerate('cloud_inactive', @game.world.randomX, @game.world.randomY)
 
     @engine.groupsManager.checkPending('cloud_active')
-
-
-
-    # if (@game.time.now > @engine.firetime.cloud)
-    #   _sprite = @engine.clouds.create(@game.world.randomX, @game.world.randomY)
-    #   @engine.firetime.cloud = @game.time.now + 500
-
-    #   # _sprite.events.onDestroy.add((-> @game._engine.coins.create(0, 0, 'coin')), @)
-    #   @fireTime = @game.time.now + 500
