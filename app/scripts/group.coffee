@@ -1,6 +1,5 @@
 class Spirit.Group
   constructor: (@game, @key, @behaviour) ->
-    console.log @behaviour
     @container = @game.add.group()
     @container.enableBody = true
     @container.physicsBodyType = Phaser.Physics.BOX2D
@@ -9,6 +8,6 @@ class Spirit.Group
 
   create: (x, y) ->
     _sprite = @container.create(x, y, @key)
+    new @behaviour(_sprite)
     _sprite.body.setCollisionMask(@mask)
     _sprite.body.setCollisionCategory(@category)
-    new @behaviour(_sprite)

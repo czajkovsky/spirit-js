@@ -1,4 +1,4 @@
-class Spirit.Behaviours.EnemyRandom extends Spirit.Behaviours.Base
+class Spirit.Behaviours.EnemyRandom extends Spirit.Behaviours.EnemyBase
   constructor: (@sprite) ->
     super(@sprite)
     @initPhysics()
