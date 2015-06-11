@@ -19,6 +19,7 @@ class Spirit.Game
     @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive)
     @engine.groupsManager.add('enemy_random', Spirit.Behaviours.EnemyRandom)
     @engine.groupsManager.add('enemy_sticky', Spirit.Behaviours.EnemySticky)
+    @engine.groupsManager.add('enemy_flying', Spirit.Behaviours.EnemyFlying)
 
     @player = new Spirit.Player(@engine, @game)
     @game.stage.backgroundColor = '#172234'
@@ -38,6 +39,7 @@ class Spirit.Game
     @engine.groupsManager.periodicGenerate('cloud_inactive', @game.world.randomX, @game.world.randomY)
     @engine.groupsManager.periodicGenerate('enemy_random', @game.world.randomX, @game.world.randomY)
     @engine.groupsManager.periodicGenerate('enemy_sticky', @game.world.randomX, @game.world.randomY)
+    @engine.groupsManager.periodicGenerate('enemy_flying', @game.world.randomX, @game.world.randomY)
 
     @engine.groupsManager.checkPending('cloud_active')
     @engine.groupsManager.checkPending('coin')
@@ -46,3 +48,6 @@ class Spirit.Game
 
     @engine.groupsManager.get('enemy_sticky').items.forEach (item) =>
       item.behaviour.snapToPlayer(@player.sprite.body)
+
+    @engine.groupsManager.get('enemy_flying').items.forEach (item) =>
+      item.behaviour.fly(@game.world)
