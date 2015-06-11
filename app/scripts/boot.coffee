@@ -1,6 +1,6 @@
 window.Spirit =
   Enemies: {}
-  Groups: {}
+
   COLLISIONS_MASKS:
     enemy: 25
     coin: 17
@@ -8,6 +8,7 @@ window.Spirit =
     cloud_inactive: 17
     player: 39
     wall: 63
+
   COLLISIONS_CATEGORIES:
     enemy: 32
     coin: 2

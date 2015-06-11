@@ -1,11 +1,14 @@
 class Spirit.Engine
   constructor: (@game) ->
+    @firetime =
+      enemy: 100
+      cloud: 500
 
   loadAssets: ->
     @game.load.image('rocket', 'images/rocket.png')
-    @game.load.image('random-enemy', 'images/random-enemy.png')
-    @game.load.image('cloud-inactive', 'images/cloud-inactive.png')
-    @game.load.image('cloud-active', 'images/cloud-active.png')
+    @game.load.image('random_enemy', 'images/random-enemy.png')
+    @game.load.image('cloud_inactive', 'images/cloud-inactive.png')
+    @game.load.image('cloud_active', 'images/cloud-active.png')
     @game.load.image('coin', 'images/coin.png')
 
   initPhysics: ->
