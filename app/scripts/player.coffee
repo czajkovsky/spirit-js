@@ -33,12 +33,3 @@ class Spirit.Player
     return unless begin
     @engine.groupsManager.markForCreation('cloud_active', { x: cloud.sprite.x, y: cloud.sprite.y })
     cloud.sprite.destroy()
-
-  test: ->
-    console.log 'testa'
-    # new Spirit.Cloud(@game)
-
-    # cloud.sprite.wrapper.activate() unless begin
-    # cloud.sprite.destroy()
-    # new Spirit.CloudActive(@game)
-

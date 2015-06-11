@@ -8,6 +8,9 @@ class Spirit.GroupsManager
     @groups[key].lastGenerationTime = 0
     @groups[key].data = new Spirit.Group(@, @game, key, isMoving)
 
+  get: (key) ->
+    @groups[key].data
+
   markForCreation: (key, position) ->
     @queue[key] = position
 

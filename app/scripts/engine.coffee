@@ -6,6 +6,7 @@ class Spirit.Engine
   loadAssets: ->
     @game.load.image('rocket', 'images/rocket.png')
     @game.load.image('enemy_random', 'images/random-enemy.png')
+    @game.load.image('enemy_sticky', 'images/sticky-enemy.png')
     @game.load.image('cloud_inactive', 'images/cloud-inactive.png')
     @game.load.image('cloud_active', 'images/cloud-active.png')
     @game.load.image('coin', 'images/coin.png')
