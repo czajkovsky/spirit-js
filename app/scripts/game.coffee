@@ -10,8 +10,6 @@ class Spirit.Game
     @ui = new Spirit.UI(@game)
     @engine = new Spirit.Engine(@game)
 
-    @progressManager = new Spirit.ProgressManager()
-
     @engine.loadAssets()
     @engine.initPhysics()
 

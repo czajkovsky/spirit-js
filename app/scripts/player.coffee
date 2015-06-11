@@ -24,9 +24,7 @@ class Spirit.Player
 
   _coinCollision: (rocket, coin, _fixture1, _fixture2, begin) ->
     coin.sprite.destroy() if begin
-    # _sprite = @game._engine.clouds.create(@game.world.randomX, @game.world.randomY, 'coin') if begin
-    # _sprite.body.setCollisionMask(Spirit.COLLISIONS_MASKS.coin)
-    # _sprite.body.setCollisionCategory(Spirit.COLLISIONS_CATEGORIES.coin)
+    @engine.progressManager.incScore()
 
   _cloudCollision: (rocket, cloud, _fixture1, _fixture2, begin) ->
     return unless begin
