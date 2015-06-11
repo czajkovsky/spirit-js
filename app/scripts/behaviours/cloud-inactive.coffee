@@ -1,6 +1,6 @@
 class Spirit.Behaviours.CloudInactive extends Spirit.Behaviours.Base
-  constructor: (@sprite) ->
-    super(@sprite)
+  constructor: (@sprite, @manager) ->
+    super(@sprite, @manager)
     @initPhysics()
 
   initPhysics: ->

@@ -8,7 +8,6 @@ class Spirit.ProgressManager
     @scoreFactor = 1
 
   incScore: ->
-    console.log @score, @scoreFactor
     @coinsCollected += 1
     @score += @scoreFactor
     @_checkScoreFactor()

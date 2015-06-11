@@ -1,8 +1,8 @@
 class Spirit.Behaviours.CloudActive extends Spirit.Behaviours.Base
-  constructor: (@sprite) ->
-    super(@sprite)
+  constructor: (@sprite, @manager) ->
+    super(@sprite, @manager)
     @initPhysics()
 
   initPhysics: ->
-    @sprite.body.setCircle(160)
+    @sprite.body.setCircle(200)
     @sprite.body.static = true

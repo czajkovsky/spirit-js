@@ -1,6 +1,6 @@
 class Spirit.Behaviours.EnemyBase extends Spirit.Behaviours.Base
-  constructor: (@sprite) ->
-    super(@sprite)
+  constructor: (@sprite, @manager) ->
+    super(@sprite, @manager)
     @initCollisions()
 
   initCollisions: ->
@@ -10,4 +10,5 @@ class Spirit.Behaviours.EnemyBase extends Spirit.Behaviours.Base
 
   _cloudCollision: (enemy, cloud, _fixture1, _fixture2, begin) ->
     return unless begin
+    @manager.markForCreation('coin', { x: @sprite.x, y: @sprite.y })
     @sprite.destroy()

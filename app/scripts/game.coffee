@@ -38,3 +38,4 @@ class Spirit.Game
     @engine.groupsManager.periodicGenerate('enemy_random', @game.world.randomX, @game.world.randomY)
 
     @engine.groupsManager.checkPending('cloud_active')
+    @engine.groupsManager.checkPending('coin')
