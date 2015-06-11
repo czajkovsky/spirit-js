@@ -1,6 +1,6 @@
 class Spirit.Player
 
-  constructor: (@game) ->
+  constructor: (@engine, @game) ->
     @sprite = @game.add.sprite(300, 300, 'rocket')
 
   initPhysics: ->
@@ -13,7 +13,7 @@ class Spirit.Player
     @sprite.body.setCollisionMask(Spirit.COLLISIONS_MASKS.player)
     @sprite.body.setCollisionCategory(Spirit.COLLISIONS_CATEGORIES.player)
     # @sprite.body.setCategoryPresolveCallback(Spirit.COLLISIONS_CATEGORIES.enemy, @_enemyCollision, @)
-    # @sprite.body.setCategoryContactCallback(Spirit.COLLISIONS_CATEGORIES.cloud_inactive, @_cloudCollision, @)
+    @sprite.body.setCategoryContactCallback(Spirit.COLLISIONS_CATEGORIES.cloud_inactive, @_cloudCollision, @)
     @sprite.body.setCategoryContactCallback(Spirit.COLLISIONS_CATEGORIES.coin, @_coinCollision, @)
 
   updateRotation: ->
@@ -29,7 +29,9 @@ class Spirit.Player
     # _sprite.body.setCollisionCategory(Spirit.COLLISIONS_CATEGORIES.coin)
 
   _cloudCollision: (rocket, cloud, _fixture1, _fixture2, begin) ->
-    cloud.sprite.destroy() if begin
+    return unless begin
+    @engine.groupsManager.markForCreation('cloud_active', { x: cloud.sprite.x, y: cloud.sprite.y })
+    cloud.sprite.destroy()
 
   test: ->
     console.log 'testa'
