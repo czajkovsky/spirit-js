@@ -12,7 +12,7 @@ class Spirit.Player
   initCollisions: ->
     @sprite.body.setCollisionMask(Spirit.COLLISIONS_MASKS.player)
     @sprite.body.setCollisionCategory(Spirit.COLLISIONS_CATEGORIES.player)
-    # @sprite.body.setCategoryPresolveCallback(Spirit.COLLISIONS_CATEGORIES.enemy, @_enemyCollision, @)
+    @sprite.body.setCategoryPresolveCallback(Spirit.COLLISIONS_CATEGORIES.enemy_random, @_enemyCollision, @)
     @sprite.body.setCategoryContactCallback(Spirit.COLLISIONS_CATEGORIES.cloud_inactive, @_cloudCollision, @)
     @sprite.body.setCategoryContactCallback(Spirit.COLLISIONS_CATEGORIES.coin, @_coinCollision, @)
 
@@ -20,10 +20,13 @@ class Spirit.Player
     @sprite.body.rotation = @game.physics.arcade.moveToPointer(@sprite, 10, @game.input.activePointer, 350)
 
   _enemyCollision: (rocket, enemy, _fixture1, _fixture2, begin) ->
-    console.log 'enemy collission'
+    return unless begin
+    enemy.sprite.destroy()
+    @engine.progressManager.decLive()
 
   _coinCollision: (rocket, coin, _fixture1, _fixture2, begin) ->
-    coin.sprite.destroy() if begin
+    return unless begin
+    coin.sprite.destroy()
     @engine.progressManager.incScore()
 
   _cloudCollision: (rocket, cloud, _fixture1, _fixture2, begin) ->

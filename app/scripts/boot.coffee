@@ -3,7 +3,7 @@ window.Spirit =
   Behaviours: {}
 
   COLLISIONS_MASKS:
-    enemy: 25
+    enemy_random: 25
     coin: 17
     cloud_active: 33
     cloud_inactive: 17
@@ -11,7 +11,7 @@ window.Spirit =
     wall: 63
 
   COLLISIONS_CATEGORIES:
-    enemy: 32
+    enemy_random: 32
     coin: 2
     cloud_active: 8
     cloud_inactive: 4
