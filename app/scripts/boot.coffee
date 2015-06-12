@@ -24,10 +24,10 @@ window.Spirit =
 
   GROUP_INTERVALS:
     coin: 500
-    enemy_random: 20000
-    enemy_sticky: 20000
-    enemy_flying: 2500
-    cloud_inactive: 10000
+    enemy_random: 3500
+    enemy_sticky: 3000
+    enemy_flying: 5000
+    cloud_inactive: 3000
 
   GROUP_PERIODS:
-    cloud_active: 7000
+    cloud_active: 10000
