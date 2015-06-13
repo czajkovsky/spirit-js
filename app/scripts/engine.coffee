@@ -1,7 +1,7 @@
 class Spirit.Engine
   constructor: (@game, @ui) ->
     @progressManager = new Spirit.ProgressManager(@)
-    @groupsManager = new Spirit.GroupsManager(@game, @progressManager)
+    @groupsManager = new Spirit.GroupsManager(@)
     @state = 'init'
     @player = null
 

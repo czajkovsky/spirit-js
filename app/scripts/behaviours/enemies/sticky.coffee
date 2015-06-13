@@ -1,17 +1,13 @@
 class Spirit.Behaviours.EnemySticky extends Spirit.Behaviours.EnemyBase
-  constructor: (@sprite, @manager) ->
-    super(@sprite, @manager)
-    @initPhysics()
-
   initPhysics: ->
     @sprite.body.setCircle(40)
 
   @offsetX: (x, y, i) ->
-    rand = parseInt(Math.random() * 1000, 10) % 100
+    rand = parseInt(Math.random() * 1000, 10) % 300
     x + (rand * (if rand % 2 > 0 then -1 else 1))
 
   @offsetY: (x, y, i) ->
-    rand = parseInt(Math.random() * 1000, 10) % 100
+    rand = parseInt(Math.random() * 1000, 10) % 300
     y + (rand * (if rand % 2 > 0 then -1 else 1))
 
   snapToPlayer: (player) ->

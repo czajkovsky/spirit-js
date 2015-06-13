@@ -1,8 +1,4 @@
 class Spirit.Behaviours.EnemyRandom extends Spirit.Behaviours.EnemyBase
-  constructor: (@sprite, @manager) ->
-    super(@sprite, @manager)
-    @initPhysics()
-
   initPhysics: ->
     @sprite.body.velocity.x = @_randomVelocity()
     @sprite.body.velocity.y = @_randomVelocity()

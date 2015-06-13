@@ -1,8 +1,4 @@
 class Spirit.Behaviours.EnemyFlying extends Spirit.Behaviours.EnemyBase
-  constructor: (@sprite, @manager) ->
-    super(@sprite, @manager)
-    @initPhysics()
-
   initPhysics: ->
     @sign = 1
     @sprite.body.setCircle(40)
