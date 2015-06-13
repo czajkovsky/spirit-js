@@ -4,7 +4,7 @@ class Spirit.Game
     @game = new Phaser.Game(Spirit.Helpers.size().width, Spirit.Helpers.size().height, Phaser.CANVAS, '', @states())
 
   states: ->
-   { preload: @preload, create: @create, update: @update }
+   { preload: @preload, create: @create, update: @update, render: @render }
 
   preload: ->
     @ui = new Spirit.UI(@game)
@@ -15,6 +15,11 @@ class Spirit.Game
 
   create: ->
     @sprite = @game.add.sprite(0, 0, 'background')
+    @sprite = @game.add.sprite(20, 20, 'coins')
+    @sprite = @game.add.sprite(@game.world.width - 80, 20, 'heart')
+
+    @ui.addText('score', '0', 100, 22)
+    @ui.addText('lives', '3', @game.world.width - 128, 22)
 
     @engine.groupsManager.add('coin', Spirit.Behaviours.Coin, false)
     @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive, false)
@@ -53,3 +58,7 @@ class Spirit.Game
 
     @engine.groupsManager.get('enemy_flying').items.forEach (item) =>
       item.behaviour.fly(@game.world)
+
+  render: ->
+    @ui.updateText('score', @engine.progressManager.score.toString())
+    @ui.updateText('lives', @engine.progressManager.lives.toString())

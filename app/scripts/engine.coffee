@@ -12,6 +12,8 @@ class Spirit.Engine
     @game.load.image('cloud_active', 'images/cloud-active.png')
     @game.load.image('coin', 'images/coin.png')
     @game.load.image('background', 'images/background.png');
+    @game.load.image('coins', 'images/coins.png');
+    @game.load.image('heart', 'images/heart.png');
 
   initPhysics: ->
     @game.physics.startSystem(Phaser.Physics.BOX2D);
