@@ -31,9 +31,12 @@ class Spirit.GroupsManager
       @groups[key].lastGenerationTime = @game.time.now + parseInt(Math.random() * Spirit.GROUP_INTERVALS[key], 10)
 
   createColony: (key, x, y) ->
+    centerOffset = 300
+    cornerX = (if x % 2 == 0 then centerOffset else @game.world.width - centerOffset)
+    cornerY = (if y % 2 == 0 then centerOffset else @game.world.height - centerOffset)
     for i in [1..@progressManager.colonyAmount] by 1
-      newX = @groups[key].data.behaviour.offsetX(x, y, i)
-      newY = @groups[key].data.behaviour.offsetY(x, y, i)
+      newX = @groups[key].data.behaviour.offsetX(cornerX, cornerY, i)
+      newY = @groups[key].data.behaviour.offsetY(cornerX, cornerY, i)
       @groups[key].data.create(newX, newY)
 
   createSingle: (key, x, y) ->

@@ -11,7 +11,9 @@ class Spirit.Behaviours.EnemyRandom extends Spirit.Behaviours.EnemyBase
     @sprite.body.setCircle(40)
 
   @offsetX: (x, y, i) ->
-    x + parseInt(Math.random() * 1000, 10) % 100
+    rand = parseInt(Math.random() * 1000, 10) % 100
+    x + (rand * (if rand % 2 > 0 then -1 else 1))
 
   @offsetY: (x, y, i) ->
-    x + parseInt(Math.random() * 1000, 10) % 100
+    rand = parseInt(Math.random() * 1000, 10) % 100
+    y + (rand * (if rand % 2 > 0 then -1 else 1))
