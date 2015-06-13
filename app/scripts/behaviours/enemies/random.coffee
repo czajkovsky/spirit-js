@@ -10,7 +10,8 @@ class Spirit.Behaviours.EnemyRandom extends Spirit.Behaviours.EnemyBase
     @sprite.body.rotateLeft(parseInt(Math.random() * 100, 10) % 90)
     @sprite.body.setCircle(40)
 
-  # initCollisions: ->
-  #   @sprite.body.setCollisionMask(Spirit.COLLISIONS_MASKS.enemy)
-  #   @sprite.body.setCollisionCategory(Spirit.COLLISIONS_CATEGORIES.enemy)
-  #   @sprite.body.setCategoryPresolveCallback(Spirit.COLLISIONS_CATEGORIES.player, @_enemyCollision, @)
+  @offsetX: (x, y, i) ->
+    x + parseInt(Math.random() * 1000, 10) % 100
+
+  @offsetY: (x, y, i) ->
+    x + parseInt(Math.random() * 1000, 10) % 100

@@ -7,6 +7,12 @@ class Spirit.Behaviours.EnemyFlying extends Spirit.Behaviours.EnemyBase
     @sign = 1
     @sprite.body.setCircle(40)
 
+  @offsetX: (x, y, i) ->
+    x
+
+  @offsetY: (x, y, i) ->
+    y + i * 105
+
   fly: (world) ->
     offset = 50
     speed = 700

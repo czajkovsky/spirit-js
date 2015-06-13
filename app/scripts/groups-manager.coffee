@@ -30,7 +30,9 @@ class Spirit.GroupsManager
 
   createColony: (key, x, y) ->
     for i in [1..@progressManager.colonyAmount] by 1
-      @groups[key].data.create(x, y + 105 * i)
+      newX = @groups[key].data.behaviour.offsetX(x, y, i)
+      newY = @groups[key].data.behaviour.offsetY(x, y, i)
+      @groups[key].data.create(newX, newY)
 
   createSingle: (key, x, y) ->
     @groups[key].data.create(x, y)

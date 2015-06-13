@@ -6,6 +6,12 @@ class Spirit.Behaviours.EnemySticky extends Spirit.Behaviours.EnemyBase
   initPhysics: ->
     @sprite.body.setCircle(40)
 
+  @offsetX: (x, y, i) ->
+    x + parseInt(Math.random() * 1000, 10) % 300
+
+  @offsetX: (x, y, i) ->
+    x + parseInt(Math.random() * 1000, 10) % 300
+
   snapToPlayer: (player) ->
     speed = 80
     enemy = @sprite.body
