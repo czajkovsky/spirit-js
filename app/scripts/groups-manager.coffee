@@ -42,7 +42,7 @@ class Spirit.GroupsManager
     centerOffset = 300
     cornerX = (if x % 2 == 0 then centerOffset else @game.world.width - centerOffset)
     cornerY = (if y % 2 == 0 then centerOffset else @game.world.height - centerOffset)
-    cornerY = @game.world.randomX % (@game.world.height - 400) if key == 'enemy_flying'
+    cornerY = y% (@game.world.height - @progressManager.colonyAmount * 110 - 80) if key == 'enemy_flying'
     for i in [1..@progressManager.colonyAmount] by 1
       newX = @groups[key].data.behaviour.offsetX(cornerX, cornerY, i)
       newY = @groups[key].data.behaviour.offsetY(cornerX, cornerY, i)
