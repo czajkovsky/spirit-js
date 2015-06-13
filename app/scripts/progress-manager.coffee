@@ -14,7 +14,7 @@ class Spirit.ProgressManager
 
   decLive: ->
     @lives -= 1
-    alert 'game over' if @lives == 0
+    # alert 'game over' if @lives == 0
 
   _checkScoreFactor: ->
     @scoreFactor = Math.max(1, parseInt(Math.sqrt(@coinsCollected), 10) - 1)

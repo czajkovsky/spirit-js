@@ -30,4 +30,4 @@ window.Spirit =
     cloud_inactive: 3000
 
   GROUP_PERIODS:
-    cloud_active: 10000
+    cloud_active: 9000
