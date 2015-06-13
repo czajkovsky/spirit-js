@@ -31,3 +31,4 @@ window.Spirit =
 
   GROUP_PERIODS:
     cloud_active: 9000
+    coin: 8000

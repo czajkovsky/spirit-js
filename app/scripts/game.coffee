@@ -46,6 +46,7 @@ class Spirit.Game
     @engine.groupsManager.checkPending('coin')
 
     @engine.groupsManager.checkOutdated('cloud_active')
+    @engine.groupsManager.checkOutdated('coin')
 
     @engine.groupsManager.get('enemy_sticky').items.forEach (item) =>
       item.behaviour.snapToPlayer(@player.sprite.body)
