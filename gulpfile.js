@@ -34,6 +34,11 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('.tmp/scripts'));
 });
 
+gulp.task('vendor-scripts', function () {
+  return gulp.src('vendor/**/*.js')
+    .pipe(gulp.dest('.tmp/vendor'));
+});
+
 gulp.task('jshint', function () {
   return gulp.src('app/scripts/**/*.js')
     .pipe(reload({stream: true, once: true}))
@@ -86,7 +91,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['bower-files', 'sass', 'styles', 'scripts', 'fonts'], function () {
+gulp.task('serve', ['bower-files', 'vendor-scripts', 'sass', 'styles', 'scripts', 'fonts'], function () {
   browserSync({
     notify: false,
     port: 9000,
