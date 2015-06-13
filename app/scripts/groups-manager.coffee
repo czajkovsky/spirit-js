@@ -8,17 +8,19 @@ class Spirit.GroupsManager
     @groups[key].lastGenerationTime = 0
     @groups[key].data = new Spirit.Group(@, @game, key, behaviour)
     @groups[key].isColony = isColony
+    @queue[key] = []
 
   get: (key) ->
     @groups[key].data
 
   markForCreation: (key, position) ->
-    @queue[key] = position
+    @queue[key].push(position)
 
   checkPending: (key) ->
-    if @queue[key]?
-      @groups[key].data.create(@queue[key].x, @queue[key].y)
-      delete @queue[key]
+    if @queue[key].length > 0
+      for position, index in @queue[key]
+        @groups[key].data.create(position.x, position.y) if position?
+        @queue[key].splice(index, 1)
 
   checkOutdated: (key) ->
     @groups[key].data.checkOutdated(Spirit.GROUP_PERIODS[key])
