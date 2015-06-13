@@ -1,7 +1,7 @@
 class Spirit.Game
 
   constructor: ->
-    @game = new Phaser.Game(Spirit.Helpers.size().width, Spirit.Helpers.size().height, Phaser.AUTO, '', @states())
+    @game = new Phaser.Game(Spirit.Helpers.size().width, Spirit.Helpers.size().height, Phaser.CANVAS, '', @states())
 
   states: ->
    { preload: @preload, create: @create, update: @update }
@@ -14,6 +14,8 @@ class Spirit.Game
     @engine.initPhysics()
 
   create: ->
+    @sprite = @game.add.sprite(0, 0, 'background')
+
     @engine.groupsManager.add('coin', Spirit.Behaviours.Coin)
     @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive)
     @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive)
@@ -22,7 +24,6 @@ class Spirit.Game
     @engine.groupsManager.add('enemy_flying', Spirit.Behaviours.EnemyFlying)
 
     @player = new Spirit.Player(@engine, @game)
-    @game.stage.backgroundColor = '#172234'
 
     @game.physics.box2d.enable(@player.sprite, false)
 
