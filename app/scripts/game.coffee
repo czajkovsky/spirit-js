@@ -22,8 +22,6 @@ class Spirit.Game
     @ui.addText('score', '0', 98, 22, 'left')
     @ui.addText('lives', '3', @game.world.width - 120, 22, 'left')
 
-    @engine.start()
-
     @engine.groupsManager.add('coin', Spirit.Behaviours.Coin, false)
     @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive, false)
     @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive, false)
@@ -32,6 +30,7 @@ class Spirit.Game
     @engine.groupsManager.add('enemy_flying', Spirit.Behaviours.EnemyFlying, true)
 
     @player = new Spirit.Player(@engine, @game)
+    @engine.start(@player)
 
     @game.physics.box2d.enable(@player.sprite, false)
 

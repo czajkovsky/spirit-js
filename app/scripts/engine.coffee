@@ -3,6 +3,7 @@ class Spirit.Engine
     @progressManager = new Spirit.ProgressManager(@)
     @groupsManager = new Spirit.GroupsManager(@game, @progressManager)
     @state = 'init'
+    @player = null
 
   loadAssets: ->
     @game.load.image('rocket', 'images/rocket.png')
@@ -28,7 +29,8 @@ class Spirit.Engine
     return @reset() if @state == 'game-over'
     @run() if @state == 'pre'
 
-  start: ->
+  start: (player) ->
+    @player = player
     @ui.displayLogo()
     @ui.addText('welcome', 'Click/tap on the screen to start', @game.world.centerX, @game.world.centerY + 130, 'center')
     @state = 'pre'
@@ -39,15 +41,16 @@ class Spirit.Engine
     @ui.updateText('score', '0')
     @ui.updateText('lives', '3')
     @state = 'playing'
+    @player.protect()
 
   reset: ->
     @progressManager.reset()
-    @groupsManager.reset()
     @ui.removeText('game-over')
     @run()
 
   stop: ->
     @ui.updateText('lives', '0')
+    @groupsManager.reset()
     @ui.displayLogo()
     @ui.addText('game-over', 'Game over :(', @game.world.centerX, @game.world.centerY + 130, 'center')
     @state = 'game-over'
