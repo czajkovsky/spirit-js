@@ -21,7 +21,7 @@ class Spirit.Player
 
   _enemyCollision: (rocket, enemy, _fixture1, _fixture2, begin) ->
     return unless begin
-    enemy.sprite.destroy()
+    enemy.sprite?.destroy()
     @engine.progressManager.decLive()
 
   _coinCollision: (rocket, coin, _fixture1, _fixture2, begin) ->

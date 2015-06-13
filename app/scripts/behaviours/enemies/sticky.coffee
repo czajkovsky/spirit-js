@@ -9,7 +9,7 @@ class Spirit.Behaviours.EnemySticky extends Spirit.Behaviours.EnemyBase
   @offsetX: (x, y, i) ->
     x + parseInt(Math.random() * 1000, 10) % 300
 
-  @offsetX: (x, y, i) ->
+  @offsetY: (x, y, i) ->
     x + parseInt(Math.random() * 1000, 10) % 300
 
   snapToPlayer: (player) ->
