@@ -13,6 +13,12 @@ class Spirit.GroupsManager
   get: (key) ->
     @groups[key].data
 
+  reset: ->
+    for key, group of @groups
+      for itemKey, item of group.data.items
+        item.sprite.destroy()
+      group.data.items = []
+
   markForCreation: (key, position) ->
     @queue[key].push(position)
 
@@ -27,10 +33,10 @@ class Spirit.GroupsManager
 
   periodicGenerate: (key, x, y) ->
     if @game.time.now > @groups[key].lastGenerationTime + Spirit.GROUP_INTERVALS[key]
-      if @groups[key].isColony then @createColony(key, x, y) else @createSingle(key, x, y)
+      if @groups[key].isColony then @_createColony(key, x, y) else @_createSingle(key, x, y)
       @groups[key].lastGenerationTime = @game.time.now + parseInt(Math.random() * Spirit.GROUP_INTERVALS[key], 10)
 
-  createColony: (key, x, y) ->
+  _createColony: (key, x, y) ->
     centerOffset = 300
     cornerX = (if x % 2 == 0 then centerOffset else @game.world.width - centerOffset)
     cornerY = (if y % 2 == 0 then centerOffset else @game.world.height - centerOffset)
@@ -39,6 +45,6 @@ class Spirit.GroupsManager
       newY = @groups[key].data.behaviour.offsetY(cornerX, cornerY, i)
       @groups[key].data.create(newX, newY)
 
-  createSingle: (key, x, y) ->
+  _createSingle: (key, x, y) ->
     @groups[key].data.create(x, y)
 

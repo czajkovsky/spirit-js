@@ -1,7 +1,8 @@
 class Spirit.Engine
-  constructor: (@game) ->
-    @progressManager = new Spirit.ProgressManager()
+  constructor: (@game, @ui) ->
+    @progressManager = new Spirit.ProgressManager(@)
     @groupsManager = new Spirit.GroupsManager(@game, @progressManager)
+    @state = 'init'
 
   loadAssets: ->
     @game.load.image('rocket', 'images/rocket.png')
@@ -14,6 +15,7 @@ class Spirit.Engine
     @game.load.image('background', 'images/background.png');
     @game.load.image('coins', 'images/coins.png');
     @game.load.image('heart', 'images/heart.png');
+    @game.load.image('logo', 'images/logo.png');
 
   initPhysics: ->
     @game.physics.startSystem(Phaser.Physics.BOX2D);
@@ -21,3 +23,32 @@ class Spirit.Engine
     @game.physics.box2d.setBoundsToWorld()
     @game.physics.box2d.restitution = 1
     @game.physics.box2d.gravity.y = @game.physics.box2d.gravity.x = 0
+
+  handleState: ->
+    return @reset() if @state == 'game-over'
+    @run() if @state == 'pre'
+
+  start: ->
+    @ui.displayLogo()
+    @ui.addText('welcome', 'Click/tap on the screen to start', @game.world.centerX, @game.world.centerY + 130, 'center')
+    @state = 'pre'
+
+  run: ->
+    @ui.removeLogo()
+    @ui.removeText('welcome')
+    @ui.updateText('score', '0')
+    @ui.updateText('lives', '3')
+    @state = 'playing'
+
+  reset: ->
+    @progressManager.reset()
+    @groupsManager.reset()
+    @ui.removeText('game-over')
+    @run()
+
+  stop: ->
+    @ui.updateText('lives', '0')
+    @ui.displayLogo()
+    @ui.addText('game-over', 'Game over :(', @game.world.centerX, @game.world.centerY + 130, 'center')
+    @state = 'game-over'
+
