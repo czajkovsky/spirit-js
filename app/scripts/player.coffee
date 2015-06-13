@@ -8,6 +8,7 @@ class Spirit.Player
     @sprite.body.allowRotation = false
     @sprite.body.collideWorldBounds = true
     @sprite.body.setCircle(42)
+    @_protect()
 
   initCollisions: ->
     @sprite.body.setCollisionMask(Spirit.COLLISIONS_MASKS.player)
@@ -22,7 +23,9 @@ class Spirit.Player
   _enemyCollision: (rocket, enemy, _fixture1, _fixture2, begin) ->
     return unless begin
     enemy.sprite?.destroy()
-    @engine.progressManager.decLive()
+    if @isProtected
+      @engine.progressManager.decLive()
+      @_protect()
 
   _coinCollision: (rocket, coin, _fixture1, _fixture2, begin) ->
     return unless begin
@@ -33,3 +36,13 @@ class Spirit.Player
     return unless begin
     @engine.groupsManager.markForCreation('cloud_active', { x: cloud.sprite.x, y: cloud.sprite.y })
     cloud.sprite.destroy()
+
+  _protect: (item) ->
+    sprite = @sprite
+    @isProtected = true
+    @game.add.tween(sprite)
+      .to({ alpha: 0.25 }, 300, Phaser.Easing.Linear.None)
+      .to({ alpha: 1 }, 300, Phaser.Easing.Linear.None)
+      .repeatAll(4)
+      .start()
+      .onComplete.add(-> sprite.isProtected = false)
