@@ -1,7 +1,7 @@
 class Spirit.Engine
   constructor: (@game) ->
-    @groupsManager = new Spirit.GroupsManager(@game)
     @progressManager = new Spirit.ProgressManager()
+    @groupsManager = new Spirit.GroupsManager(@game, @progressManager)
 
   loadAssets: ->
     @game.load.image('rocket', 'images/rocket.png')

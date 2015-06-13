@@ -16,12 +16,12 @@ class Spirit.Game
   create: ->
     @sprite = @game.add.sprite(0, 0, 'background')
 
-    @engine.groupsManager.add('coin', Spirit.Behaviours.Coin)
-    @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive)
-    @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive)
-    @engine.groupsManager.add('enemy_random', Spirit.Behaviours.EnemyRandom)
-    @engine.groupsManager.add('enemy_sticky', Spirit.Behaviours.EnemySticky)
-    @engine.groupsManager.add('enemy_flying', Spirit.Behaviours.EnemyFlying)
+    @engine.groupsManager.add('coin', Spirit.Behaviours.Coin, false)
+    @engine.groupsManager.add('cloud_inactive', Spirit.Behaviours.CloudInactive, false)
+    @engine.groupsManager.add('cloud_active', Spirit.Behaviours.CloudActive, false)
+    @engine.groupsManager.add('enemy_random', Spirit.Behaviours.EnemyRandom, true)
+    @engine.groupsManager.add('enemy_sticky', Spirit.Behaviours.EnemySticky, true)
+    @engine.groupsManager.add('enemy_flying', Spirit.Behaviours.EnemyFlying, true)
 
     @player = new Spirit.Player(@engine, @game)
 

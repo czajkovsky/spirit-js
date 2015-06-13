@@ -1,12 +1,13 @@
 class Spirit.GroupsManager
-  constructor: (@game) ->
+  constructor: (@game, @progressManager) ->
     @groups = {}
     @queue = {}
 
-  add: (key, isMoving) ->
+  add: (key, behaviour, isColony) ->
     @groups[key] = {}
     @groups[key].lastGenerationTime = 0
-    @groups[key].data = new Spirit.Group(@, @game, key, isMoving)
+    @groups[key].data = new Spirit.Group(@, @game, key, behaviour)
+    @groups[key].isColony = isColony
 
   get: (key) ->
     @groups[key].data
@@ -24,5 +25,13 @@ class Spirit.GroupsManager
 
   periodicGenerate: (key, x, y) ->
     if @game.time.now > @groups[key].lastGenerationTime + Spirit.GROUP_INTERVALS[key]
-      @groups[key].data.create(x, y)
+      if @groups[key].isColony then @createColony(key, x, y) else @createSingle(key, x, y)
       @groups[key].lastGenerationTime = @game.time.now + parseInt(Math.random() * Spirit.GROUP_INTERVALS[key], 10)
+
+  createColony: (key, x, y) ->
+    for i in [1..@progressManager.colonyAmount] by 1
+      @groups[key].data.create(x, y + 105 * i)
+
+  createSingle: (key, x, y) ->
+    @groups[key].data.create(x, y)
+
