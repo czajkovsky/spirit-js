@@ -4,5 +4,5 @@ class Spirit.Behaviours.CloudActive extends Spirit.Behaviours.Base
     @initPhysics()
 
   initPhysics: ->
-    @sprite.body.setCircle(200)
+    @sprite.body.setCircle(160)
     @sprite.body.static = true
