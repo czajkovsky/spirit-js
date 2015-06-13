@@ -11,7 +11,7 @@ class Spirit.Behaviours.EnemySticky extends Spirit.Behaviours.EnemyBase
     y + (rand * (if rand % 2 > 0 then -1 else 1))
 
   snapToPlayer: (player) ->
-    speed = 80
+    speed = 60 + @engine.progressManager.coinsCollected * 10
     enemy = @sprite.body
     angle = Math.atan2(player.y - enemy.y, player.x - enemy.x)
     enemy.rotation = angle
