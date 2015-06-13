@@ -18,3 +18,4 @@ class Spirit.ProgressManager
 
   _checkScoreFactor: ->
     @scoreFactor = Math.max(1, parseInt(Math.sqrt(@coinsCollected), 10) - 1)
+    @colonyAmount = 3 + parseInt(Math.sqrt(@coinsCollected / 10), 10)
