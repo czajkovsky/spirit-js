@@ -7,7 +7,6 @@ class Spirit.GroupsManager
 
   add: (key, behaviour, isColony) ->
     @groups[key] = {}
-    @groups[key].lastGenerationTime = 0
     @groups[key].data = new Spirit.Group(@engine, key, behaviour)
     @groups[key].isColony = isColony
     @queue[key] = []
@@ -34,6 +33,7 @@ class Spirit.GroupsManager
     @groups[key].data.checkOutdated(Spirit.GROUP_PERIODS[key])
 
   periodicGenerate: (key, x, y) ->
+    @groups[key].lastGenerationTime = @game.time.now unless @groups[key].lastGenerationTime?
     if @game.time.now > @groups[key].lastGenerationTime + Spirit.GROUP_INTERVALS[key]
       if @groups[key].isColony then @_createColony(key, x, y) else @_createSingle(key, x, y)
       @groups[key].lastGenerationTime = @game.time.now + parseInt(Math.random() * Spirit.GROUP_INTERVALS[key], 10)
