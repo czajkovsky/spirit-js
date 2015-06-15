@@ -3,6 +3,9 @@
 ## Acknowledges
 This project was implemented for fun using [Phaser.io](http://phaser.io/) and is strongly inspired by great [iOS game](https://itunes.apple.com/us/app/spirit/id354998923?mt=8) by Marco Mazzoli. I used [Box2D plugin](http://phaser.io/shop/plugins/box2d) as 2D physics engine. That means you need to buy licence before running it locally.
 
+## Screenshot
+<img src="https://raw.githubusercontent.com/czajkovsky/spirit-js/master/readme/screen.png">
+
 ## Entities
 Image  | Description
 --------------| -------------
