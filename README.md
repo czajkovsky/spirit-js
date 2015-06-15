@@ -10,7 +10,7 @@ Image  | Description
 <img src="https://raw.githubusercontent.com/czajkovsky/spirit-js/master/readme/cloud.png" width="151"> | **Cloud** - hit it with spaceship to activate cloud. Activated cloud on contact with enemy converts it to coin.
 <img src="https://raw.githubusercontent.com/czajkovsky/spirit-js/master/readme/enemy-flying.png" width="151"> | **Flying enemy** - it flies from left edge to right edge of the screen.
 <img src="https://raw.githubusercontent.com/czajkovsky/spirit-js/master/readme/enemy-random.png" width="151"> | **Random enemy** - this enemy has constant velocity but direction and angle is random.
-<img src="https://raw.githubusercontent.com/czajkovsky/spirit-js/master/readme/enemy-sticky.png" width="151"> | **Random enemy** - this enemy follows your position.
+<img src="https://raw.githubusercontent.com/czajkovsky/spirit-js/master/readme/enemy-sticky.png" width="151"> | **Sticky enemy** - this enemy follows your position.
 
 ## Running locally
 Install npm packages:
